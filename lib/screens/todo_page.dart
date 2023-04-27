@@ -90,13 +90,11 @@ class _TodoPageState extends State<TodoPage> {
                       ),
                       IconButton(
                         onPressed: () {
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (BuildContext context) => TodoModal(
-                          //     type: 'Delete',
-                          //     todoIndex: index,
-                          //   ),
-                          // );
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                TodoModal(type: 'Delete', item: todo),
+                          );
                         },
                         icon: const Icon(Icons.delete_outlined),
                       )
