@@ -54,10 +54,10 @@ class _TodoPageState extends State<TodoPage> {
               return Dismissible(
                 key: Key(todo.id.toString()),
                 onDismissed: (direction) {
-                  // context.read<TodoListProvider>().deleteTodo(todo.title);
+                  context.read<TodoListProvider>().deleteTodo(todo.id!);
 
-                  // ScaffoldMessenger.of(context).showSnackBar(
-                  //     SnackBar(content: Text('${todo.title} dismissed')));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('${todo.title} dismissed')));
                 },
                 background: Container(
                   color: Colors.red,
@@ -70,7 +70,7 @@ class _TodoPageState extends State<TodoPage> {
                     onChanged: (bool? value) {
                       context
                           .read<TodoListProvider>()
-                          .toggleStatus(index, value!);
+                          .toggleStatus(todo.id!, value!);
                     },
                   ),
                   trailing: Row(
@@ -78,13 +78,13 @@ class _TodoPageState extends State<TodoPage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (BuildContext context) => TodoModal(
-                          //     type: 'Edit',
-                          //     todoIndex: index,
-                          //   ),
-                          // );
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => TodoModal(
+                              type: 'Edit',
+                              item: todo,
+                            ),
+                          );
                         },
                         icon: const Icon(Icons.create_outlined),
                       ),
