@@ -38,9 +38,9 @@ class TodoModal extends StatelessWidget {
     switch (type) {
       case 'Delete':
         {
-          return Text(
-            "Are you sure you want to delete?",
-          );
+return Text(
+  "Are you sure you want to delete ${item!.title}?",
+);
         }
       // Edit and add will have input field in them
       default:
@@ -84,16 +84,14 @@ class TodoModal extends StatelessWidget {
               Navigator.of(context).pop();
               break;
             }
-          case 'Delete':
-            {
-              // context
-              //     .read<TodoListProvider>()
-              //     .deleteTodo(todoItems[todoIndex].title);
+case 'Delete':
+  {
+    context.read<TodoListProvider>().deleteTodo(item!.id!);
 
-              // Remove dialog after editing
-              Navigator.of(context).pop();
-              break;
-            }
+    // Remove dialog after editing
+    Navigator.of(context).pop();
+    break;
+  }
         }
       },
       style: TextButton.styleFrom(
