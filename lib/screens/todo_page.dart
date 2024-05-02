@@ -25,7 +25,7 @@ class _TodoPageState extends State<TodoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Todo"),
+        title: const Text("Todo"),
       ),
       body: ListView.builder(
         itemCount: todoList.length,
