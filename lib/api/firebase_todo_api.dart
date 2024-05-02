@@ -11,4 +11,8 @@ class FirebaseTodoAPI {
       return "Failed with error &#39;${e.code}: ${e.message}";
     }
   }
+
+  Stream<QuerySnapshot> getAllTodos() {
+    return db.collection("todos").snapshots();
+  }
 }
